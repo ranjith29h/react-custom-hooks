@@ -1,26 +1,50 @@
 # react-custom-hooks
 React custom hooks - useRefInput and useInput
 
+import useRefInput 
+
 ```
-import React from "react";
-import ReactDOM from "react-dom";
 import { useRefInput } from "./useRefInput";
+```
+Assign,Set,Get,Clear and Focus 
 
-function App() {
-  const {
-    bind: bindName,
-    resetValue: resetname,
-    getValue: getname,
-    setFocus: setFocusName
-  } = useRefInput("");
+```
+const { bind,resetValue, getValue,setFocus} = useRefInput("");
+```
 
-  const {
-    bind: bindMail,
-    resetValue: resetMail,
-    getValue: getMail
-  } = useRefInput("");
+Bind it to Input 
 
-  const handleSubmit = evt => {
+```
+<input type="text" {...bind} />
+```
+
+On submit of Input we can Get,Clear and Focus
+
+```
+alert(getValue());
+resetValue();
+setFocus();
+```
+
+For Multiple input we can rename while Destructure Variables
+[Reference] https://wesbos.com/destructuring-renaming/
+
+```
+const { bindName,resetName, getName} = useRefInput("");
+const { bindMail,resetMail, getMail} = useRefInput("");
+```
+Binding to inputs
+
+```
+ <form onSubmit={handleSubmit}>
+ <input type="text" {...bindName} />
+ <input type="text" {...bindMail} />
+ </form>
+```
+On submit we can handle like below
+
+```
+const handleSubmit = evt => {
     evt.preventDefault();
     alert(`Name ${getname()}`);
     alert(`Mail ${getMail()}`);
@@ -28,18 +52,8 @@ function App() {
     resetMail();
     setFocusName();
   };
-  return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name:
-        <input type="text" {...bindName} />
-        <input type="text" {...bindMail} />
-      </label>
-      <input type="submit" value="Submit" />
-    </form>
-  );
-}
-
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
 ```
+
+
+That's it!!!
+
