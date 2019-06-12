@@ -27,11 +27,11 @@ setFocus();
 ```
 
 For Multiple input we can rename while Destructure Variables
-[Reference] https://wesbos.com/destructuring-renaming/
+[reference]( https://wesbos.com/destructuring-renaming/)
 
 ```
-const { bindName,resetName, getName} = useRefInput("");
-const { bindMail,resetMail, getMail} = useRefInput("");
+const { bind:bindName,resetValue:resetName, getValue:getName,setFocus:setFocusName} = useRefInput("");
+const { bind:bindMail,resetValue:resetMail, getValue:getMail} = useRefInput("");
 ```
 Binding to inputs
 
@@ -46,9 +46,9 @@ On submit we can handle like below
 ```
 const handleSubmit = evt => {
     evt.preventDefault();
-    alert(`Name ${getname()}`);
+    alert(`Name ${getName()}`);
     alert(`Mail ${getMail()}`);
-    resetname();
+    resetName();
     resetMail();
     setFocusName();
   };
